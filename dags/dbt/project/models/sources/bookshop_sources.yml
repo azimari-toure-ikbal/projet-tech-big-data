@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: bookshop
+    database: BOOKSHOP
+    schema: RAW
+    tables:
+      - name: CATEGORY
+        columns:
+          - name: CATEGORY_ID
+            tests:
+              - unique
+              - not_null
+      - name: BOOKS
+        columns:
+          - name: BOOKS_ID
+            tests:
+              - unique
+              - not_null
+              - relationships:
+                  to: source('BOOKSHOP', 'CATEGORY')
+                  field: CATEGORY_ID
+      - name: CUSTOMERS
+        columns:
+          - name: CUSTOMERS_ID
+            tests:
+              - unique
+              - not_null
+      - name: FACTURES
+        columns:
+          - name: FACTURES_ID
+            tests:
+              - unique
+              - not_null
+              - relationships:
+                  to: source('BOOKSHOP', 'CUSTOMERS')
+                  field: CUSTOMERS_ID
+      - name: VENTES
+        columns:
+          - name: VENTES_ID
+            tests:
+              - unique
+              - not_null
+              - relationships:
+                  to: source('BOOKSHOP', 'FACTURES')
+                  field: FACTURES_ID
+                  to: source('BOOKSHOP', 'BOOKS')
+                  field: BOOKS_ID

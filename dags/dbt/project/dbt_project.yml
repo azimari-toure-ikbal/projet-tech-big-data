@@ -1,0 +1,23 @@
+name: bookshop_project
+version: "1.0"
+config-version: 2
+
+profile: big_data_project
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_modules"
+
+models:
+  bookshop_project:
+    staging:
+      +schema: STAGING
+      +materialized: view
+    warehouse:
+      +schema: WAREHOUSE
+      +materialized: table
+    marts:
+      +schema: MARTS
+      +materialized: table
