@@ -8,7 +8,6 @@ airflow-webserver.pid
 webserver_config.py
 airflow.cfg
 airflow.db
-config.bat
 node_modules
 
 # environment variables
