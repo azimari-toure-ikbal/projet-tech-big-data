@@ -10,3 +10,8 @@ airflow.cfg
 airflow.db
 config.bat
 node_modules
+
+# environment variables
+.env
+.env.local
+.env.production
